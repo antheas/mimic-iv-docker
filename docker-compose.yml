@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  # Authentication
+  auth:
+    image: 'postgres:14'
+    ports:
+      - "8080:80" # "host:container"
+    volumes:
+    #  - auth-data:/var/lib/mysql
+    #  - ./:/workspace
+    #command: echo "Hello World"
+    
+    #links:
+    #  - auth-db
+    #depends_on: 
+    #  - auth-db
+    #networks:
+    #  - default
+    
+    #restart: always
+    
+    #environment: 
+    #  DB_NAME: "${MYSQL_NAME}"
+    #secrets:
+    #  - mysql_password
+
+  # Authentication database
+  #auth-db:
+  #  build:
+  #    context: './auth/auth-db/'
+  #    dockerfile: Dockerfile.prod
+  #    args:
+  #      MYSQL_VERSION: ${MYSQL_VERSION}
+
+#networks:
+#  default:
+
+volumes:
+  auth-data:
+#  auth-db-data:
