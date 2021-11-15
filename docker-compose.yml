@@ -1,39 +1,29 @@
 version: '3.8'
 services:
-  # Authentication
-  auth:
-    image: 'postgres:14'
+  mimic-pgadmin:
+    image: 'dpage/pgadmin4:6'
     ports:
       - "8080:80" # "host:container"
+    depends_on:
+      - mimic-db
+    networks:
+      - default
+
+  # Authentication
+  mimic-db:
+    image: 'postgres:14'
     volumes:
     #  - auth-data:/var/lib/mysql
     #  - ./:/workspace
     #command: echo "Hello World"
     
-    #links:
-    #  - auth-db
-    #depends_on: 
-    #  - auth-db
-    #networks:
-    #  - default
-    
-    #restart: always
-    
-    #environment: 
-    #  DB_NAME: "${MYSQL_NAME}"
-    #secrets:
-    #  - mysql_password
+    environment: 
+     POSTGRES_DB: "${MIMIC_DB}"
+     POSTGRES_USER: "${MIMIC_USER}"
+     POSTGRES_PASSWORD: "${MIMIC_PASSWORD}"
 
-  # Authentication database
-  #auth-db:
-  #  build:
-  #    context: './auth/auth-db/'
-  #    dockerfile: Dockerfile.prod
-  #    args:
-  #      MYSQL_VERSION: ${MYSQL_VERSION}
-
-#networks:
-#  default:
+networks:
+ default:
 
 volumes:
   auth-data:
