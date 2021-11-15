@@ -8,23 +8,34 @@ services:
       - mimic-db
     networks:
       - default
+    
+    volumes:
+      - mimic-pgadmin-data:/var/lib/pgadmin
+    environment: 
+      POSTGRES_DB: "${MIMIC_DB}"
+      POSTGRES_USER: "${MIMIC_USER}"
+      POSTGRES_PASSWORD: "${MIMIC_PASSWORD}"
+
 
   # Authentication
   mimic-db:
     image: 'postgres:14'
     volumes:
-    #  - auth-data:/var/lib/mysql
-    #  - ./:/workspace
-    #command: echo "Hello World"
+      - ./data/helpers/mimic_initdb:/docker-entrypoint-initdb.d
+      - ./data/helpers/mimic_code:/mimic_code
+      - ./data/datasets/mimiciv_1_0:/datasets/mimiciv_1_0
+      - ./data/datasets/mimiciv_ed_1_0:/datasets/mimiciv_ed_1_0
+      # - mimic-db-data:/var/lib/postgresql/data
+      - ./data/transforms/mimic-db:/var/lib/postgresql/data
     
     environment: 
-     POSTGRES_DB: "${MIMIC_DB}"
-     POSTGRES_USER: "${MIMIC_USER}"
-     POSTGRES_PASSWORD: "${MIMIC_PASSWORD}"
+      POSTGRES_DB: "${MIMIC_DB}"
+      POSTGRES_USER: "${MIMIC_USER}"
+      POSTGRES_PASSWORD: "${MIMIC_PASSWORD}"
 
 networks:
  default:
 
 volumes:
-  auth-data:
-#  auth-db-data:
+  mimic-pgadmin-data:
+  mimic-db-data:
