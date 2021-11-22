@@ -12,14 +12,14 @@ services:
     volumes:
       - mimic-pgadmin-data:/var/lib/pgadmin
     environment: 
-      POSTGRES_DB: "${MIMIC_DB}"
-      POSTGRES_USER: "${MIMIC_USER}"
-      POSTGRES_PASSWORD: "${MIMIC_PASSWORD}"
-
+      PGADMIN_DEFAULT_EMAIL: "${MIMIC_PGADMIN_EMAIL}"
+      PGADMIN_DEFAULT_PASSWORD: "${MIMIC_PGADMIN_PASSWORD}"
 
   # Authentication
   mimic-db:
     image: 'postgres:14'
+    ports:
+      - "5432:5432"
     volumes:
       - ./data/helpers/mimic_initdb:/docker-entrypoint-initdb.d
       - ./data/helpers/mimic_code:/mimic_code
