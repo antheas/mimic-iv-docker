@@ -1,5 +1,5 @@
 Processed dataset information goes here.
-Simlink it to place it somewhere else:
+Simlink it to place it somewhere else (assumes ~/data is mounted to a large drive):
 ```
-ln -s /mnt/ext/transforms/mimic-db data/transforms/mimic-db
+ln -s ~/data/transforms/mimic-db data/transforms/mimic-db
 ```
