@@ -27,6 +27,10 @@ services:
       - ./data/datasets/mimiciv_ed_1_0:/datasets/mimiciv_ed_1_0
       # - mimic-db-data:/var/lib/postgresql/data
       - ./data/transforms/mimic-db:/var/lib/postgresql/data
+    command:
+      - "postgres"
+      - "-c"
+      - "maintenance_work_mem=512MB"
     
     environment: 
       POSTGRES_DB: "${MIMIC_DB}"
