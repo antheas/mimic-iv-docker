@@ -3,7 +3,7 @@
 
 begin;
 \i :mimic_script_dir/create.sql
+-- \i :mimic_script_dir/constraint.sql -- some data doesn't fit constraints
 \i :mimic_script_dir/load_gz.sql
--- \i :mimic_script_dir/constraint.sql
--- \i :mimic_script_dir/index.sql
+\i :mimic_script_dir/index.sql
 end;

@@ -27,15 +27,23 @@ services:
       - ./data/datasets/mimiciv_ed_1_0:/datasets/mimiciv_ed_1_0
       # - mimic-db-data:/var/lib/postgresql/data
       - ./data/transforms/mimic-db:/var/lib/postgresql/data
+      - ./data/transforms/mimic-db-dump:/dump
     command:
       - "postgres"
       - "-c"
       - "maintenance_work_mem=512MB"
+      - "-c"
+      - "max_parallel_workers=${MIMIC_PG_PARALLEL}"
+      - "-c"
+      - "max_parallel_maintenance_workers=${MIMIC_PG_PARALLEL}"
+      - "-c"
+      - "max_parallel_workers_per_gather=${MIMIC_PG_PARALLEL}"
     
     environment: 
       POSTGRES_DB: "${MIMIC_DB}"
       POSTGRES_USER: "${MIMIC_USER}"
       POSTGRES_PASSWORD: "${MIMIC_PASSWORD}"
+      POSTGRES_PARALLEL: "${MIMIC_PG_PARALLEL}"
 
 networks:
  default:
