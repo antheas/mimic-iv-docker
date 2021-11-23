@@ -21,14 +21,14 @@ services:
     ports:
       - "5432:5432"
     volumes:
+      # Init
       - ./data/helpers/mimic_initdb:/docker-entrypoint-initdb.d
       - ./data/helpers/mimic_code:/mimic_code
-
+      # Datasets
       - ./data/datasets/mimiciv_1_0:/datasets/mimiciv_1_0
       - ./data/datasets/mimiciv_ed_1_0:/datasets/mimiciv_ed_1_0
-
+      # Database
       - ./data/transforms/mimic-db/data:/var/lib/postgresql/data
-      - ./data/transforms/mimic-db/dump:/dump
     command:
       - "postgres"
       - "-c"

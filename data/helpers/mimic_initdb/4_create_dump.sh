@@ -1,1 +1,0 @@
-pg_dump -F d -j ${POSTGRES_PARALLEL} -f /dump/initdata -U mimic
