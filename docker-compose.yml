@@ -23,11 +23,12 @@ services:
     volumes:
       - ./data/helpers/mimic_initdb:/docker-entrypoint-initdb.d
       - ./data/helpers/mimic_code:/mimic_code
+
       - ./data/datasets/mimiciv_1_0:/datasets/mimiciv_1_0
       - ./data/datasets/mimiciv_ed_1_0:/datasets/mimiciv_ed_1_0
-      # - mimic-db-data:/var/lib/postgresql/data
-      - ./data/transforms/mimic-db:/var/lib/postgresql/data
-      - ./data/transforms/mimic-db-dump:/dump
+
+      - ./data/transforms/mimic-db/data:/var/lib/postgresql/data
+      - ./data/transforms/mimic-db/dump:/dump
     command:
       - "postgres"
       - "-c"
