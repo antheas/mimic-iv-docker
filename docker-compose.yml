@@ -28,7 +28,8 @@ services:
       - ./data/datasets/mimiciv_1_0:/datasets/mimiciv_1_0
       - ./data/datasets/mimiciv_ed_1_0:/datasets/mimiciv_ed_1_0
       # Database
-      - ./data/transforms/mimic-db/data:/var/lib/postgresql/data
+      - ./data/transforms/mimic-db:/var/lib/postgresql/data
+      - ./data/transforms/mimic-db-dump:/dump
     command:
       - "postgres"
       - "-c"
@@ -39,6 +40,7 @@ services:
       - "max_parallel_maintenance_workers=${MIMIC_PG_PARALLEL}"
       - "-c"
       - "max_parallel_workers_per_gather=${MIMIC_PG_PARALLEL}"
+    user: "$DOCKER_UID:$DOCKER_GID" 
     
     environment: 
       POSTGRES_DB: "${MIMIC_DB}"
@@ -51,4 +53,3 @@ networks:
 
 volumes:
   mimic-pgadmin-data:
-  mimic-db-data:
