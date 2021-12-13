@@ -22,13 +22,14 @@ services:
       - "5432:5432"
     volumes:
       # Init
-      - "${MIMIC_DIR_GIT}:/docker-entrypoint-initdb.d/"
+      - "${MIMIC_DIR_GIT}/${MIMIC_DIR_INIT}:/docker-entrypoint-initdb.d/"
       - "${MIMIC_DIR_GIT}/mimic_code:/mimic_code"
       # Datasets
       - "${MIMIC_DIR_IV}:/datasets/mimiciv_1_0"
       - "${MIMIC_DIR_ED}:/datasets/mimiciv_ed_1_0"
       # Database
       - "${MIMIC_DIR_DB}:/var/lib/postgresql/data"
+      - "${MIMIC_DIR_DUMP}:/dump"
     command:
       - "postgres"
       - "-c"
