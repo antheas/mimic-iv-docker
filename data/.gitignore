@@ -1,5 +1,0 @@
-datasets/*
-transforms/*
-
-!datasets/readme.md
-!transforms/readme.md
