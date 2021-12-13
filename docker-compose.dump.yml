@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  mimic-db:
+    volumes:
+      - "${MIMIC_DIR_GIT}:/docker-entrypoint-initdb.d"
+      - "${MIMIC_DIR_DUMP}:/dump"

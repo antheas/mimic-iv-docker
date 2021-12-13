@@ -1,0 +1,1 @@
+alter database :DBNAME set search_path to mimic_core, mimic_hosp, mimic_icu, mimic_ed;
