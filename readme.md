@@ -56,6 +56,15 @@ docker-compose stop
 docker-compose down -v
 ```
 
+### Search Path
+The search path has been altered for you by running the following command from
+`init.d/3_mimic_search_path.sql`:
+``` sql
+alter database :DBNAME set search_path to mimic_core, mimic_hosp, mimic_icu, mimic_ed;
+```
+As such, you can construct sql queries by ommiting `mimic_*`, so
+`select * from mimic_core.admissions` becomes `select * from admissions`.
+
 ### In case of errors
 If an error occurs during loading, `PostgreSQL` will notice a non-empty db directory
 on next startup and will skip initialization.
