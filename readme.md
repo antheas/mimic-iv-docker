@@ -1,10 +1,13 @@
 # MIMIC IV PostgreSQL scripts for Docker
 This repository contains scripts that can be used to load MIMIC-IV in a PostgreSQL container,
-PG-ADMIN will also be launched.
+pgAdmin will also be launched.
 It uses the scripts provided from the [MIT MIMIC code](https://github.com/MIT-LCP/mimic-code) repository.
 
 [MIMIC-IV 1.0](https://physionet.org/content/mimiciv/1.0/) and 
-[MIMIC-IV-ED 1.0](https://physionet.org/content/mimic-iv-ed/1.0/) will be loaded.
+[MIMIC-IV-ED 1.0](https://physionet.org/content/mimic-iv-ed/1.0/) will be loaded
+into a shared PostgreSQL database and the 
+[MIMIC-IV concepts](https://github.com/MIT-LCP/mimic-code/tree/main/mimic-iv/concepts)
+will be computed.
 
 
 ## How to use
