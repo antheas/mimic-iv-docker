@@ -92,6 +92,7 @@ the dataset, you can just transfer the dump.
 You can use the code with your project by adding a submodule to your git repository
 ``` bash
 git submodule add git@github.com:antheas/mimic-iv-docker <your-dir>
+git submodule update --init --recursive
 cat <your-dir>/.env >> .env
 nano .env
 ```
