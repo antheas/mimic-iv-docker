@@ -66,7 +66,7 @@ The search path has been altered for you by running the following command from
 ``` sql
 alter database :DBNAME set search_path to mimic_core, mimic_hosp, mimic_icu, mimic_ed;
 ```
-As such, you can construct sql queries by ommiting `mimic_*`, so
+As such, you can construct sql queries by omiting `mimic_*`, so
 `select * from mimic_core.admissions` becomes `select * from admissions`.
 
 ### In case of errors
