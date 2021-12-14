@@ -56,6 +56,10 @@ docker-compose stop
 docker-compose down -v
 ```
 
+Now, you can visit <http://localhost:8080> (pgAdmin) and run some queries.
+Tip: you an forward a port using ssh to your local computer by running
+`ssh <host> -L 8080:localhost:8080`.
+
 ### Search Path
 The search path has been altered for you by running the following command from
 `init.d/3_mimic_search_path.sql`:
